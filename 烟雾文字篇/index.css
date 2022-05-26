@@ -1,0 +1,77 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.textBg {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #111;
+  position: absolute;
+  z-index: 1000;
+}
+
+.textBg.background {
+  animation: background 1s ease forwards;
+}
+
+.textBg .text {
+  color: #fff;
+  margin: 20px;
+  max-width: 600px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.textBg .text span {
+  cursor: pointer;
+  display: inline-block;
+  transform-origin: bottom;
+}
+
+.textBg .text span.active {
+  animation: smoke 2s linear forwards;
+}
+
+.textBg .text span.final {
+  animation: final 2s ease forwards;
+}
+
+@keyframes smoke {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(0, 0) scale(1) rotate(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: translate(200px, -300px) scale(4) rotate(720deg);
+  }
+}
+
+@keyframes final {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(2);
+    font-size: 0;
+  }
+}
+
+@keyframes background {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    height: 0;
+  }
+}
