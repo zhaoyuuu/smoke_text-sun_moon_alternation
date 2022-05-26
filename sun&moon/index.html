@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>日月交替</title>
+</head>
+<body>
+  <div class="btn-box">
+    <div onclick="change('light')">白天</div>
+    <div onclick="change('dark')">夜晚</div>
+  </div>
+  <div class="dark" id="container">
+    <!-- 背景 -->
+    <div class="bg"></div>
+    <!-- 月亮 -->
+    <div class="moon-box">
+      <div class="moon"></div>
+    </div>
+    <!-- 太阳 -->
+    <div class="sun-box">
+      <div class="sun"></div>
+    </div>
+    <!-- 海洋 -->
+    <div class="sea"></div>
+  </div>
+</body>
+
+  <script>
+    const container = document.querySelector('#container')
+    function change(className){
+      container.classList.remove('dark')
+      container.classList.remove('light')
+      container.classList.add(className)
+    }
+  </script>
+
+</html>

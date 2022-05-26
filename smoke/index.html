@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index.css">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 烟雾文字部分 -->
+
+  <section class="textBg">
+    <p class="text">
+      “人最宝贵的是生命，生命对于人只有一次，人的一生应该这样度过：当回忆往事的时候，他不会因为虚度年华而悔恨，也不会因为碌碌无为而羞愧。在临死的时候，他能够说，我的生命和全部的精力，都全部献给了世界上最壮丽的事业——为人类的解放事业而斗争。”
+    </p>
+  </section>
+
+  <!-- 日月交替部分 -->
+
+  <div class="btn-box">
+    <div onclick="change('light')">白天</div>
+    <div onclick="change('dark')">夜晚</div>
+  </div>
+  <div class="dark" id="container">
+    <!-- 背景 -->
+    <div class="bg"></div>
+    <!-- 月亮 -->
+    <div class="moon-box">
+      <div class="moon"></div>
+    </div>
+    <!-- 太阳 -->
+    <div class="sun-box">
+      <div class="sun"></div>
+    </div>
+    <!-- 海洋 -->
+    <div class="sea"></div>
+  </div>
+
+</body>
+
+<script>
+
+  // 烟雾文字部分
+
+  const text = document.querySelector('.text')
+  text.innerHTML = text.textContent.replace(/\S/g, '<span>$&</span>')
+
+  // 给每个文字添加鼠标事件
+  const letters = document.querySelectorAll('span')
+  console.log(letters);
+  letters.forEach((char)=>{
+    char.addEventListener('mouseover', ()=>{
+      char.classList.add('active')
+    })
+  })
+
+  // 五秒之后文字消失
+  setTimeout(() => {
+    letters.forEach((char) => {
+      if(!char.classList.contains('active')){
+        char.classList.add('final')
+      }
+
+      
+    })
+  }, 5000);
+
+  // 六秒时候文字背景消失
+  const textBg = document.querySelector('.textBg')
+  setTimeout(() => {
+    textBg.classList.add('background')
+  }, 6000);
+
+
+  // 日月交替部分
+
+  const container = document.querySelector('#container')
+  function change(className){
+    container.classList.remove('dark')
+    container.classList.remove('light')
+    container.classList.add(className)
+  }
+
+</script>
+
+</html>
